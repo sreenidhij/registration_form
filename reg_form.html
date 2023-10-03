@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form {
+            background-color: #ffcccb; /* Pink */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+
+        .form h1 {
+            text-align: center;
+            color: #007bff; /* Blue */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4caf50; /* Green */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .details {
+            background-color: #aad6e6; /* Light Blue */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            flex-grow: 1;
+        }
+
+        .details h2 {
+            text-align: center;
+            color: #007bff; /* Blue */
+        }
+    </style>
+    <title>Enrollment Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1>Enrollment Form</h1>
+            <form id="enrollmentForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Enrollment Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit">Enroll</button>
+            </form>
+        </div>
+        <div class="details">
+            <h2>Enrollment Details</h2>
+            <div id="enrollmentDetails">
+                <!-- Details will be displayed here using JavaScript -->
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const enrollmentForm = document.getElementById("enrollmentForm");
+            const enrollmentDetails = document.getElementById("enrollmentDetails");
+
+            enrollmentForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const course = document.getElementById("course").value;
+                const date = document.getElementById("date").value;
+
+                const detailsHTML = `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Course:</strong> ${course}</p>
+                    <p><strong>Enrollment Date:</strong> ${date}</p>
+                `;
+
+                enrollmentDetails.innerHTML = detailsHTML;
+                enrollmentForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
